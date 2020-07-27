@@ -1,0 +1,7 @@
+footer {
+    @include heading-style;
+    font-size: 2em;
+    padding: 30px;
+    display: flex;
+    justify-content: space-evenly;
+}
