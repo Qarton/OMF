@@ -1,0 +1,125 @@
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+header {
+  font-family: "Roboto", sans-serif;
+  background-color: #579c87;
+  color: #FDCB46;
+  text-align: center;
+  font-weight: 900;
+  font-size: 3em;
+  padding: 50px;
+}
+
+footer {
+  background-color: #579c87;
+  color: #FDCB46;
+  font-size: 2em;
+  padding: 30px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.home_menu {
+  width: 40%;
+  min-height: 40vh;
+  margin: 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+  transition: transform 500ms ease-in-out;
+}
+.home_menu__note {
+  background-color: #fcdfdb;
+  color: #3c1218;
+}
+.home_menu__chic {
+  background-color: #fff5fe;
+}
+.home_menu__chic h1 {
+  background: -webkit-linear-gradient(#d8852e, #905bfd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.home_menu__chic h2 {
+  color: #C77412;
+}
+.home_menu__papille {
+  background-color: #f9f9f9;
+}
+.home_menu__papille h1 {
+  background: -webkit-linear-gradient(#0431df, #0887fb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.home_menu__papille h2 {
+  color: #0887fb;
+}
+.home_menu__palette {
+  background-color: #fdfffd;
+}
+.home_menu__palette h1 {
+  background: -webkit-linear-gradient(#3d9339, #bfff7e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.home_menu__palette h2 {
+  color: #72bf56;
+}
+.home_menu:hover {
+  transform: scale(1.1);
+}
+.home_menu i {
+  font-size: 72px;
+  background: -webkit-linear-gradient(#f04a5e, #f8a183);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.menu_note_h1 {
+  font-family: "Devonshire";
+  font-weight: lighter;
+}
+
+.menu_note_h2 {
+  font-family: "Sriracha";
+  font-weight: lighter;
+}
+
+.menu_chic_h1 {
+  font-family: "Croissant one";
+}
+
+.menu_chic_h2 {
+  font-family: "Noto Serif";
+  font-weight: bold;
+}
+
+.menu_papille_h1 {
+  font-family: "Dancing Script";
+}
+
+.menu_papille_h2 {
+  font-family: "Bad Script";
+  font-weight: bold;
+}
+
+.menu_palette_h1 {
+  font-family: "Kaushan Script";
+}
+
+.menu_palette_h2 {
+  font-family: "Bad Script";
+  font-weight: bold;
+}
+
+.home {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+/*# sourceMappingURL=style%20-%20Copie.css.map */

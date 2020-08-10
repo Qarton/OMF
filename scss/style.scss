@@ -1,0 +1,220 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+$green: #579c87;
+$yellow: #FDCB46;
+$white: #FFF;
+$title-prm2: text;
+$title-prm3: transparent;
+
+$types: (note :"$note", chic:"$chic", papille:"$papille", palette:"$palette");
+
+$title: (
+    note: (
+        title: #3c1218,
+        font: 'Devonshire',
+        weight: lighter,
+        size: 2em,
+    ),
+    chic: (
+        title: linear-gradient(140deg, #d8852e, #905bfd),
+        font: 'Croissant one',
+        weight: lighter,
+        size: 2em,
+    ),
+    papille: (
+        title: linear-gradient(25deg, #0431df, #0887fb 60%),
+        font: 'Dancing Script',
+        weight: normal,
+        size: 2em,
+    ),
+    palette: (
+        title: linear-gradient(25deg, #3d9339, #bfff7e 60%),
+        font: 'Kaushan Script',
+        weight: normal,
+        size: 2em,
+    )
+);
+
+$subtitle: (
+    note: (
+        font-sub: 'Sriracha',
+        weight-sub: lighter,
+    ),
+    chic: (
+        font-sub: 'Noto Serif',
+        weight-sub: bold,
+    ),
+    papille: (
+        font-sub: 'Bad Script',
+        weight-sub: bold,
+    ),
+    palette: (
+        font-sub: 'Bad Script',
+        weight-sub: bold,
+    )
+);
+
+$resto: (
+    note: (
+        back: #fcdfdb,
+        txt: #3c1218,
+    ),
+    chic: (
+        back: #fff5fe,
+        txt: #C77412,
+    ),
+    papille: (
+        back: #f9f9f9,
+        txt: #0887fb,
+    ),
+    palette: (
+        back: #fdfffd,
+        txt: #72bf56,
+    )
+);
+
+@mixin resto($state) {
+    $plt: map-get($resto, $state);
+    background-color: map-get($plt, back);
+    color: map-get($plt, txt);
+}
+
+@mixin title($state) {
+    $plt:map-get($title, $state);
+    background: map-get($plt,title);
+    -webkit-background-clip: $title-prm2;
+    -webkit-text-fill-color: $title-prm3;
+    font-family: map-get($plt,font);
+    font-weight: map-get($plt,weight);
+    font-size: map-get($plt,size);
+}
+
+@mixin subtitle($state) {
+    $plt:map-get($subtitle, $state);
+    font-family: map-get($plt,font-sub);
+    font-weight: map-get($plt,weight-sub);
+    
+}
+
+@mixin heading-style {
+    background-color: $green;
+    color: $yellow;
+}
+a {
+    text-decoration: none;
+}
+ul {
+    list-style-type: none;
+    }
+header {
+    font-family: 'Roboto', sans-serif;
+    @include heading-style;
+    text-align: center;
+    font-weight: 900;
+    font-size: 3em;
+    padding: 50px;
+}
+
+footer {
+    @include heading-style;
+    font-size: 2em;
+    padding: 30px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+.home {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.home_link {
+    width: 30%;
+    min-height: 40vh;
+    margin: 50px 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home_menu {
+    width: 100%;
+    min-height: 45vh;
+    margin: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+    transition: transform 500ms ease-in-out;
+    @each $type, $var in $types {
+        &__#{$type} {
+            h1 {
+                @include title($type);
+            }
+            h2 {
+                @include subtitle($type);
+            }
+            @include resto($type);
+        }
+    }
+    &:hover {
+        transform: scale(1.1);
+    }
+    i {
+        font-size: 72px;
+        background: -webkit-linear-gradient(#f04a5e, #f8a183);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+.page_menu {
+    display: flex;
+    justify-content: center;
+}
+.menu {
+    width: 80%;
+    min-height: 60vh;
+    margin: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+    @each $type, $var in $types {
+        &__#{$type} {
+            h1 {
+                @include title($type);
+            }
+            h2 {
+                @include subtitle($type);
+                &::before {
+                    display:inline-block;
+                    vertical-align: middle;
+                    margin-right: 100px;
+                    height:5px;
+                    width:300px;
+                    background: #3c1218;
+                    content:""
+                }
+                &::after {
+                    display:inline-block;
+                    vertical-align: middle;
+                    margin-left: 100px;
+                    height:5px;
+                    width:300px;
+                    background: #3c1218;
+                    content:""
+                }
+            }
+            @include resto($type);
+        }
+    }
+    &__part {
+        display: flex;
+    }
+}

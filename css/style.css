@@ -1,12 +1,21 @@
 body {
-  font-family: sans-serif;
+  font-family: "Roboto", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
 }
 
 header {
+  font-family: "Roboto", sans-serif;
   background-color: #579c87;
   color: #FDCB46;
   text-align: center;
-  font-weight: bold;
+  font-weight: 900;
   font-size: 3em;
   padding: 50px;
 }
@@ -20,21 +29,259 @@ footer {
   justify-content: space-evenly;
 }
 
-.menu_home {
-  max-width: 40%;
-  height: auto;
-  margin: 2%;
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
-  transition: transform 500ms ease-in-out;
-}
-.menu_home:hover {
-  transform: scale(1.1);
-}
-
 .home {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+}
+
+.home_link {
+  width: 30%;
+  min-height: 40vh;
+  margin: 50px 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home_menu {
+  width: 100%;
+  min-height: 45vh;
+  margin: 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+  transition: transform 500ms ease-in-out;
+}
+.home_menu__note {
+  background-color: #fcdfdb;
+  color: #3c1218;
+}
+.home_menu__note h1 {
+  background: #3c1218;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Devonshire";
+  font-weight: lighter;
+  font-size: 2em;
+}
+.home_menu__note h2 {
+  font-family: "Sriracha";
+  font-weight: lighter;
+}
+.home_menu__chic {
+  background-color: #fff5fe;
+  color: #C77412;
+}
+.home_menu__chic h1 {
+  background: linear-gradient(140deg, #d8852e, #905bfd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Croissant one";
+  font-weight: lighter;
+  font-size: 2em;
+}
+.home_menu__chic h2 {
+  font-family: "Noto Serif";
+  font-weight: bold;
+}
+.home_menu__papille {
+  background-color: #f9f9f9;
+  color: #0887fb;
+}
+.home_menu__papille h1 {
+  background: linear-gradient(25deg, #0431df, #0887fb 60%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Dancing Script";
+  font-weight: normal;
+  font-size: 2em;
+}
+.home_menu__papille h2 {
+  font-family: "Bad Script";
+  font-weight: bold;
+}
+.home_menu__palette {
+  background-color: #fdfffd;
+  color: #72bf56;
+}
+.home_menu__palette h1 {
+  background: linear-gradient(25deg, #3d9339, #bfff7e 60%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Kaushan Script";
+  font-weight: normal;
+  font-size: 2em;
+}
+.home_menu__palette h2 {
+  font-family: "Bad Script";
+  font-weight: bold;
+}
+.home_menu:hover {
+  transform: scale(1.1);
+}
+.home_menu i {
+  font-size: 72px;
+  background: -webkit-linear-gradient(#f04a5e, #f8a183);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.page_menu {
+  display: flex;
+  justify-content: center;
+}
+
+.menu {
+  width: 80%;
+  min-height: 60vh;
+  margin: 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+.menu__note {
+  background-color: #fcdfdb;
+  color: #3c1218;
+}
+.menu__note h1 {
+  background: #3c1218;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Devonshire";
+  font-weight: lighter;
+  font-size: 2em;
+}
+.menu__note h2 {
+  font-family: "Sriracha";
+  font-weight: lighter;
+}
+.menu__note h2::before {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 100px;
+  height: 5px;
+  width: 300px;
+  background: #3c1218;
+  content: "";
+}
+.menu__note h2::after {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 100px;
+  height: 5px;
+  width: 300px;
+  background: #3c1218;
+  content: "";
+}
+.menu__chic {
+  background-color: #fff5fe;
+  color: #C77412;
+}
+.menu__chic h1 {
+  background: linear-gradient(140deg, #d8852e, #905bfd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Croissant one";
+  font-weight: lighter;
+  font-size: 2em;
+}
+.menu__chic h2 {
+  font-family: "Noto Serif";
+  font-weight: bold;
+}
+.menu__chic h2::before {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 100px;
+  height: 5px;
+  width: 300px;
+  background: #3c1218;
+  content: "";
+}
+.menu__chic h2::after {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 100px;
+  height: 5px;
+  width: 300px;
+  background: #3c1218;
+  content: "";
+}
+.menu__papille {
+  background-color: #f9f9f9;
+  color: #0887fb;
+}
+.menu__papille h1 {
+  background: linear-gradient(25deg, #0431df, #0887fb 60%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Dancing Script";
+  font-weight: normal;
+  font-size: 2em;
+}
+.menu__papille h2 {
+  font-family: "Bad Script";
+  font-weight: bold;
+}
+.menu__papille h2::before {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 100px;
+  height: 5px;
+  width: 300px;
+  background: #3c1218;
+  content: "";
+}
+.menu__papille h2::after {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 100px;
+  height: 5px;
+  width: 300px;
+  background: #3c1218;
+  content: "";
+}
+.menu__palette {
+  background-color: #fdfffd;
+  color: #72bf56;
+}
+.menu__palette h1 {
+  background: linear-gradient(25deg, #3d9339, #bfff7e 60%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Kaushan Script";
+  font-weight: normal;
+  font-size: 2em;
+}
+.menu__palette h2 {
+  font-family: "Bad Script";
+  font-weight: bold;
+}
+.menu__palette h2::before {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 100px;
+  height: 5px;
+  width: 300px;
+  background: #3c1218;
+  content: "";
+}
+.menu__palette h2::after {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 100px;
+  height: 5px;
+  width: 300px;
+  background: #3c1218;
+  content: "";
+}
+.menu__part {
+  display: flex;
 }
 
 /*# sourceMappingURL=style.css.map */
