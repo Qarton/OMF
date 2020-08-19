@@ -1,39 +1,47 @@
-body {
-    font-family: 'Roboto', sans-serif;
-}
-
+/* Variables */
+$logo-font: 'Roboto';
 $green: #579c87;
 $yellow: #FDCB46;
 $white: #FFF;
+$chic-color1:#C67412;
+$chic-color2:#A56799;
+$chic-color3:#6E4CCC;
 $title-prm2: text;
 $title-prm3: transparent;
+$num-dots: 3;
+$anim-dur: 1s;
+$anim-delay: $anim-dur / $num-dots;
 
-$types: (note :"$note", chic:"$chic", papille:"$papille", palette:"$palette");
+$types: (note, chic, papille, palette);
+
+$breakpoints: (
+  mobile: 599px
+);
 
 $title: (
     note: (
         title: #3c1218,
         font: 'Devonshire',
         weight: lighter,
-        size: 2em,
+        size: 3vw,
     ),
     chic: (
-        title: linear-gradient(140deg, #d8852e, #905bfd),
+        title: linear-gradient(140deg, $chic-color1, $chic-color2, $chic-color3),
         font: 'Croissant one',
         weight: lighter,
-        size: 2em,
+        size: 2.5vw,
     ),
     papille: (
         title: linear-gradient(25deg, #0431df, #0887fb 60%),
         font: 'Dancing Script',
         weight: normal,
-        size: 2em,
+        size: 3vw,
     ),
     palette: (
         title: linear-gradient(25deg, #3d9339, #bfff7e 60%),
         font: 'Kaushan Script',
         weight: normal,
-        size: 2em,
+        size: 3vw,
     )
 );
 
@@ -41,44 +49,78 @@ $subtitle: (
     note: (
         font-sub: 'Sriracha',
         weight-sub: lighter,
+        size-sub: 3vw,
     ),
     chic: (
         font-sub: 'Noto Serif',
         weight-sub: bold,
+        size-sub: 3vw,
     ),
     papille: (
         font-sub: 'Bad Script',
         weight-sub: bold,
+        size-sub: 3vw,
     ),
     palette: (
         font-sub: 'Bad Script',
         weight-sub: bold,
+        size-sub: 3vw,
+    )
+);
+
+$sub_menu: (
+    note: (
+        font-sub: 'Sriracha',
+        weight-sub: lighter,
+        size-sub: 1.5vw,
+    ),
+    chic: (
+        font-sub: 'Noto Serif',
+        weight-sub: bold,
+        size-sub: 1.5vw,
+    ),
+    papille: (
+        font-sub: 'Bad Script',
+        weight-sub: bold,
+        size-sub: 1.5vw,
+    ),
+    palette: (
+        font-sub: 'Bad Script',
+        weight-sub: bold,
+        size-sub: 1.5vw,
     )
 );
 
 $resto: (
     note: (
+        font: 'Sriracha',
         back: #fcdfdb,
         txt: #3c1218,
     ),
     chic: (
+        font: 'Noto Serif',
         back: #fff5fe,
         txt: #C77412,
     ),
     papille: (
-        back: #f9f9f9,
+        font: 'Bad Script',
+        back: #edefef,
         txt: #0887fb,
     ),
     palette: (
+        font: 'Bad Script',
         back: #fdfffd,
         txt: #72bf56,
     )
 );
 
+/* Mixins*/
+
 @mixin resto($state) {
     $plt: map-get($resto, $state);
     background-color: map-get($plt, back);
     color: map-get($plt, txt);
+    font-family: map-get($plt,font);
 }
 
 @mixin title($state) {
@@ -95,126 +137,231 @@ $resto: (
     $plt:map-get($subtitle, $state);
     font-family: map-get($plt,font-sub);
     font-weight: map-get($plt,weight-sub);
-    
+    font-size: map-get($plt,size-sub);   
+}
+
+@mixin sub_menu($state) {
+    $plt:map-get($sub_menu, $state);
+    font-family: map-get($plt,font-sub);
+    font-weight: map-get($plt,weight-sub);
+    font-size: map-get($plt,size-sub);   
 }
 
 @mixin heading-style {
     background-color: $green;
     color: $yellow;
+    font-family: $logo-font, sans-serif;
 }
+
+/* Général */
+
+body {
+    font-family: $logo-font, sans-serif;
+    margin: 0px;
+    font-size: 1.2vw;
+}
+
+h2 {
+    margin: 0px;
+}
+
 a {
     text-decoration: none;
 }
+
 ul {
     list-style-type: none;
     }
+
+i {
+    background: -webkit-linear-gradient(#f04a5e, #f8a183);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 header {
-    font-family: 'Roboto', sans-serif;
     @include heading-style;
+    font-size: 2vw;
+    padding: 1.5vw;
     text-align: center;
-    font-weight: 900;
-    font-size: 3em;
-    padding: 50px;
+    font-weight: 900;  
 }
 
 footer {
     @include heading-style;
-    font-size: 2em;
-    padding: 30px;
+    font-size: 1.5vw;
+    padding: 1vw;
     display: flex;
     justify-content: space-evenly;
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
 }
 
+/* animations */ 
+.shake:hover {
+    animation: shakes 1s ease-in-out;
+}
 
+@keyframes shakes {
+    10%, 90% {
+        transform: translateX(-1px);
+      }
+      
+      20%, 80% {
+        transform: translateX(2px);
+      }
+    
+      30%, 50%, 70% {
+        transform: translateX(-4px);
+      }
+    
+      40%, 60% {
+        transform: translateX(4px);
+      }
+}
+
+@keyframes dots {
+    0% {
+        transform: translateY(200%);
+    };
+    100% {
+        transform: translateY(0%);
+    };
+}
+
+/* Home */
 .home {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-}
-
-.home_link {
-    width: 30%;
-    min-height: 40vh;
-    margin: 50px 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.home_menu {
-    width: 100%;
-    min-height: 45vh;
-    margin: 2%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
-    transition: transform 500ms ease-in-out;
-    @each $type, $var in $types {
-        &__#{$type} {
-            h1 {
-                @include title($type);
-            }
-            h2 {
-                @include subtitle($type);
-            }
-            @include resto($type);
-        }
-    }
-    &:hover {
-        transform: scale(1.1);
-    }
-    i {
-        font-size: 72px;
-        background: -webkit-linear-gradient(#f04a5e, #f8a183);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-}
-.page_menu {
-    display: flex;
-    justify-content: center;
-}
-.menu {
-    width: 80%;
-    min-height: 60vh;
-    margin: 2%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
-    @each $type, $var in $types {
-        &__#{$type} {
-            h1 {
-                @include title($type);
-            }
-            h2 {
-                @include subtitle($type);
-                &::before {
-                    display:inline-block;
-                    vertical-align: middle;
-                    margin-right: 100px;
-                    height:5px;
-                    width:300px;
-                    background: #3c1218;
-                    content:""
-                }
-                &::after {
-                    display:inline-block;
-                    vertical-align: middle;
-                    margin-left: 100px;
-                    height:5px;
-                    width:300px;
-                    background: #3c1218;
-                    content:""
-                }
-            }
-            @include resto($type);
-        }
-    }
-    &__part {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    &__menu {
+        width: 35vw;
+        height: 45vw;
+        margin: 5vw;
         display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+        transition: transform 500ms ease-in-out;
+        @each $type in $types {
+            &__#{$type} {
+                .title {
+                    @include title($type);
+                }
+                .sub_home {
+                    @include subtitle($type);
+                }
+                @include resto($type);
+            }
+        }
+        &:hover {
+            transform: scale(1.1);
+        }
+        i {
+            font-size: 8vw;
+        }
+    }
+    &__next {
+        margin-bottom: 10vw;
+        display: flex;
+        justify-content: center;
+    }
+    &__btn_next {
+        @include heading-style;
+        width: 25vw;
+        height: 3vw;
+        font-size: 1.5vw;
+        border-radius: 1vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: transform 500ms ease-in-out;
+        &:hover {
+            transform: scale(1.1);
+        }
+        .load {
+            width: 40px;
+            height: 25px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            &_dot {
+                background-color: $yellow;
+                height: 5px;
+                width: 5px;
+                animation: dots $anim-dur backwards infinite ease-in-out alternate;
+                @for $i from 1 through $num-dots {
+                    &--#{$i} {
+                        animation-delay: $anim-delay * $i;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* Menu */ 
+
+.page {
+    display: flex;
+    justify-content: center;
+    &__menu {
+        height: 45vw;
+        margin: 2vw 15vw 3vw;
+        padding: 6vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+        @each $type in $types {
+            &__#{$type} {
+                .title {
+                    @include title($type);
+                }
+                .sub {
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 100%;
+                &__menu {
+                    @include sub_menu($type);
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+                @include resto($type);
+            }
+        }
+        &__part {
+            display: flex;
+        }
+        &__link {
+            color: $yellow;
+        }
+        i {
+            font-size: 3vw;
+        }
+    }
+}
+
+.sidebar {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 2vw;
+    width: 10vw;
+    &__right {
+        transform: scaleX(-1);
+    }
+    @for $i from 1 through 3 {
+        @each $type in $types {
+            &__#{$type}__#{$i} {
+             background-image: url("../img/#{$type}_#{$i}.png");
+            }
+        }
     }
 }

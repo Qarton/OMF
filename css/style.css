@@ -1,5 +1,15 @@
+@charset "UTF-8";
+/* Variables */
+/* Mixins*/
+/* Général */
 body {
   font-family: "Roboto", sans-serif;
+  margin: 0px;
+  font-size: 1.2vw;
+}
+
+h2 {
+  margin: 0px;
 }
 
 a {
@@ -10,44 +20,71 @@ ul {
   list-style-type: none;
 }
 
+i {
+  background: -webkit-linear-gradient(#f04a5e, #f8a183);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 header {
-  font-family: "Roboto", sans-serif;
   background-color: #579c87;
   color: #FDCB46;
+  font-family: "Roboto", sans-serif;
+  font-size: 2vw;
+  padding: 1.5vw;
   text-align: center;
   font-weight: 900;
-  font-size: 3em;
-  padding: 50px;
 }
 
 footer {
   background-color: #579c87;
   color: #FDCB46;
-  font-size: 2em;
-  padding: 30px;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5vw;
+  padding: 1vw;
   display: flex;
   justify-content: space-evenly;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
 }
 
+/* animations */
+.shake:hover {
+  animation: shakes 1s ease-in-out;
+}
+
+@keyframes shakes {
+  10%, 90% {
+    transform: translateX(-1px);
+  }
+  20%, 80% {
+    transform: translateX(2px);
+  }
+  30%, 50%, 70% {
+    transform: translateX(-4px);
+  }
+  40%, 60% {
+    transform: translateX(4px);
+  }
+}
+@keyframes dots {
+  0% {
+    transform: translateY(200%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+/* Home */
 .home {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
-
-.home_link {
-  width: 30%;
-  min-height: 40vh;
-  margin: 50px 10%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.home_menu {
-  width: 100%;
-  min-height: 45vh;
-  margin: 2%;
+.home__menu {
+  width: 35vw;
+  height: 45vw;
+  margin: 5vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,233 +92,310 @@ footer {
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
   transition: transform 500ms ease-in-out;
 }
-.home_menu__note {
+.home__menu__note {
   background-color: #fcdfdb;
   color: #3c1218;
+  font-family: "Sriracha";
 }
-.home_menu__note h1 {
+.home__menu__note .title {
   background: #3c1218;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: "Devonshire";
   font-weight: lighter;
-  font-size: 2em;
+  font-size: 3vw;
 }
-.home_menu__note h2 {
+.home__menu__note .sub_home {
   font-family: "Sriracha";
   font-weight: lighter;
+  font-size: 3vw;
 }
-.home_menu__chic {
+.home__menu__chic {
   background-color: #fff5fe;
   color: #C77412;
+  font-family: "Noto Serif";
 }
-.home_menu__chic h1 {
-  background: linear-gradient(140deg, #d8852e, #905bfd);
+.home__menu__chic .title {
+  background: linear-gradient(140deg, #C67412, #A56799, #6E4CCC);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: "Croissant one";
   font-weight: lighter;
-  font-size: 2em;
+  font-size: 2.5vw;
 }
-.home_menu__chic h2 {
+.home__menu__chic .sub_home {
   font-family: "Noto Serif";
   font-weight: bold;
+  font-size: 3vw;
 }
-.home_menu__papille {
-  background-color: #f9f9f9;
+.home__menu__papille {
+  background-color: #edefef;
   color: #0887fb;
+  font-family: "Bad Script";
 }
-.home_menu__papille h1 {
+.home__menu__papille .title {
   background: linear-gradient(25deg, #0431df, #0887fb 60%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: "Dancing Script";
   font-weight: normal;
-  font-size: 2em;
+  font-size: 3vw;
 }
-.home_menu__papille h2 {
+.home__menu__papille .sub_home {
   font-family: "Bad Script";
   font-weight: bold;
+  font-size: 3vw;
 }
-.home_menu__palette {
+.home__menu__palette {
   background-color: #fdfffd;
   color: #72bf56;
+  font-family: "Bad Script";
 }
-.home_menu__palette h1 {
+.home__menu__palette .title {
   background: linear-gradient(25deg, #3d9339, #bfff7e 60%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: "Kaushan Script";
   font-weight: normal;
-  font-size: 2em;
+  font-size: 3vw;
 }
-.home_menu__palette h2 {
+.home__menu__palette .sub_home {
   font-family: "Bad Script";
   font-weight: bold;
+  font-size: 3vw;
 }
-.home_menu:hover {
+.home__menu:hover {
   transform: scale(1.1);
 }
-.home_menu i {
-  font-size: 72px;
-  background: -webkit-linear-gradient(#f04a5e, #f8a183);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.home__menu i {
+  font-size: 8vw;
 }
-
-.page_menu {
+.home__next {
+  margin-bottom: 10vw;
   display: flex;
   justify-content: center;
 }
+.home__btn_next {
+  background-color: #579c87;
+  color: #FDCB46;
+  font-family: "Roboto", sans-serif;
+  width: 25vw;
+  height: 3vw;
+  font-size: 1.5vw;
+  border-radius: 1vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 500ms ease-in-out;
+}
+.home__btn_next:hover {
+  transform: scale(1.1);
+}
+.home__btn_next .load {
+  width: 40px;
+  height: 25px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.home__btn_next .load_dot {
+  background-color: #FDCB46;
+  height: 5px;
+  width: 5px;
+  animation: dots 1s backwards infinite ease-in-out alternate;
+}
+.home__btn_next .load_dot--1 {
+  animation-delay: 0.3333333333s;
+}
+.home__btn_next .load_dot--2 {
+  animation-delay: 0.6666666667s;
+}
+.home__btn_next .load_dot--3 {
+  animation-delay: 1s;
+}
 
-.menu {
-  width: 80%;
-  min-height: 60vh;
-  margin: 2%;
+/* Menu */
+.page {
+  display: flex;
+  justify-content: center;
+}
+.page__menu {
+  height: 45vw;
+  margin: 2vw 15vw 3vw;
+  padding: 6vw;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
 }
-.menu__note {
+.page__menu__note {
   background-color: #fcdfdb;
   color: #3c1218;
+  font-family: "Sriracha";
 }
-.menu__note h1 {
+.page__menu__note .title {
   background: #3c1218;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: "Devonshire";
   font-weight: lighter;
-  font-size: 2em;
+  font-size: 3vw;
 }
-.menu__note h2 {
+.page__menu__note .sub {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.page__menu__note .sub__menu {
   font-family: "Sriracha";
   font-weight: lighter;
+  font-size: 1.5vw;
 }
-.menu__note h2::before {
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 100px;
-  height: 5px;
-  width: 300px;
-  background: #3c1218;
-  content: "";
+.page__menu__note .sub__menu:hover {
+  text-decoration: underline;
 }
-.menu__note h2::after {
-  display: inline-block;
-  vertical-align: middle;
-  margin-left: 100px;
-  height: 5px;
-  width: 300px;
-  background: #3c1218;
-  content: "";
-}
-.menu__chic {
+.page__menu__chic {
   background-color: #fff5fe;
   color: #C77412;
+  font-family: "Noto Serif";
 }
-.menu__chic h1 {
-  background: linear-gradient(140deg, #d8852e, #905bfd);
+.page__menu__chic .title {
+  background: linear-gradient(140deg, #C67412, #A56799, #6E4CCC);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: "Croissant one";
   font-weight: lighter;
-  font-size: 2em;
+  font-size: 2.5vw;
 }
-.menu__chic h2 {
+.page__menu__chic .sub {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.page__menu__chic .sub__menu {
   font-family: "Noto Serif";
   font-weight: bold;
+  font-size: 1.5vw;
 }
-.menu__chic h2::before {
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 100px;
-  height: 5px;
-  width: 300px;
-  background: #3c1218;
-  content: "";
+.page__menu__chic .sub__menu:hover {
+  text-decoration: underline;
 }
-.menu__chic h2::after {
-  display: inline-block;
-  vertical-align: middle;
-  margin-left: 100px;
-  height: 5px;
-  width: 300px;
-  background: #3c1218;
-  content: "";
-}
-.menu__papille {
-  background-color: #f9f9f9;
+.page__menu__papille {
+  background-color: #edefef;
   color: #0887fb;
+  font-family: "Bad Script";
 }
-.menu__papille h1 {
+.page__menu__papille .title {
   background: linear-gradient(25deg, #0431df, #0887fb 60%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: "Dancing Script";
   font-weight: normal;
-  font-size: 2em;
+  font-size: 3vw;
 }
-.menu__papille h2 {
+.page__menu__papille .sub {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.page__menu__papille .sub__menu {
   font-family: "Bad Script";
   font-weight: bold;
+  font-size: 1.5vw;
 }
-.menu__papille h2::before {
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 100px;
-  height: 5px;
-  width: 300px;
-  background: #3c1218;
-  content: "";
+.page__menu__papille .sub__menu:hover {
+  text-decoration: underline;
 }
-.menu__papille h2::after {
-  display: inline-block;
-  vertical-align: middle;
-  margin-left: 100px;
-  height: 5px;
-  width: 300px;
-  background: #3c1218;
-  content: "";
-}
-.menu__palette {
+.page__menu__palette {
   background-color: #fdfffd;
   color: #72bf56;
+  font-family: "Bad Script";
 }
-.menu__palette h1 {
+.page__menu__palette .title {
   background: linear-gradient(25deg, #3d9339, #bfff7e 60%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: "Kaushan Script";
   font-weight: normal;
-  font-size: 2em;
+  font-size: 3vw;
 }
-.menu__palette h2 {
+.page__menu__palette .sub {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.page__menu__palette .sub__menu {
   font-family: "Bad Script";
   font-weight: bold;
+  font-size: 1.5vw;
 }
-.menu__palette h2::before {
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 100px;
-  height: 5px;
-  width: 300px;
-  background: #3c1218;
-  content: "";
+.page__menu__palette .sub__menu:hover {
+  text-decoration: underline;
 }
-.menu__palette h2::after {
-  display: inline-block;
-  vertical-align: middle;
-  margin-left: 100px;
-  height: 5px;
-  width: 300px;
-  background: #3c1218;
-  content: "";
-}
-.menu__part {
+.page__menu__part {
   display: flex;
+}
+.page__menu__link {
+  color: #FDCB46;
+}
+.page__menu i {
+  font-size: 3vw;
+}
+
+.sidebar {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  height: 2vw;
+  width: 10vw;
+}
+.sidebar__right {
+  transform: scaleX(-1);
+}
+.sidebar__note__1 {
+  background-image: url("../img/note_1.png");
+}
+.sidebar__chic__1 {
+  background-image: url("../img/chic_1.png");
+}
+.sidebar__papille__1 {
+  background-image: url("../img/papille_1.png");
+}
+.sidebar__palette__1 {
+  background-image: url("../img/palette_1.png");
+}
+.sidebar__note__2 {
+  background-image: url("../img/note_2.png");
+}
+.sidebar__chic__2 {
+  background-image: url("../img/chic_2.png");
+}
+.sidebar__papille__2 {
+  background-image: url("../img/papille_2.png");
+}
+.sidebar__palette__2 {
+  background-image: url("../img/palette_2.png");
+}
+.sidebar__note__3 {
+  background-image: url("../img/note_3.png");
+}
+.sidebar__chic__3 {
+  background-image: url("../img/chic_3.png");
+}
+.sidebar__papille__3 {
+  background-image: url("../img/papille_3.png");
+}
+.sidebar__palette__3 {
+  background-image: url("../img/palette_3.png");
 }
 
 /*# sourceMappingURL=style.css.map */
