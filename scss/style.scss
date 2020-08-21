@@ -3,9 +3,14 @@ $logo-font: 'Roboto';
 $green: #579c87;
 $yellow: #FDCB46;
 $white: #FFF;
+$chic-color:#fff;
 $chic-color1:#C67412;
 $chic-color2:#A56799;
 $chic-color3:#6E4CCC;
+$note-txt:#3c1218;
+$chic-txt:#c77412;
+$papille-txt:#0887fb;
+$palette-txt:#72bf56;
 $title-prm2: text;
 $title-prm3: transparent;
 $num-dots: 3;
@@ -20,82 +25,11 @@ $types: (note, chic, papille, palette);
 
 $mobile:599px;
 
-$title: (
-    note: (
-        title: #3c1218,
-        font: 'Devonshire',
-        weight: lighter,
-        size: 3vw,
-    ),
-    chic: (
-        title: linear-gradient(140deg, $chic-color1, $chic-color2, $chic-color3),
-        font: 'Croissant one',
-        weight: lighter,
-        size: 2.5vw,
-    ),
-    papille: (
-        title: linear-gradient(25deg, #0431df, #0887fb 60%),
-        font: 'Dancing Script',
-        weight: normal,
-        size: 3vw,
-    ),
-    palette: (
-        title: linear-gradient(25deg, #3d9339, #bfff7e 60%),
-        font: 'Kaushan Script',
-        weight: normal,
-        size: 3vw,
-    )
-);
-
-$subtitle: (
-    note: (
-        font-sub: 'Sriracha',
-        weight-sub: lighter,
-        size-sub: 3vw,
-    ),
-    chic: (
-        font-sub: 'Noto Serif',
-        weight-sub: bold,
-        size-sub: 3vw,
-    ),
-    papille: (
-        font-sub: 'Bad Script',
-        weight-sub: bold,
-        size-sub: 3vw,
-    ),
-    palette: (
-        font-sub: 'Bad Script',
-        weight-sub: bold,
-        size-sub: 3vw,
-    )
-);
-
-$sub_menu: (
-    note: (
-        font-sub: 'Sriracha',
-        weight-sub: lighter,
-        size-sub: 1.5vw,
-    ),
-    chic: (
-        font-sub: 'Noto Serif',
-        weight-sub: bold,
-        size-sub: 1.5vw,
-    ),
-    papille: (
-        font-sub: 'Bad Script',
-        weight-sub: bold,
-        size-sub: 1.5vw,
-    ),
-    palette: (
-        font-sub: 'Bad Script',
-        weight-sub: bold,
-        size-sub: 1.5vw,
-    )
-);
-$note-txt:#3c1218;
-$chic-txt:#c77412;
-$papille-txt:#0887fb;
-$palette-txt:#72bf56;
+$chic-color: (
+        1:$chic-color1,
+        2:$chic-color2,
+        3:$chic-color3,
+    );
 
 
 $resto: (
@@ -103,60 +37,111 @@ $resto: (
         font: 'Sriracha',
         back: #fcdfdb,
         txt: $note-txt,
+        title: $note-txt,
+        title-font: 'Devonshire',
+        title-weight: lighter,
+        title-size: 3vw,
+        sub-font: 'Sriracha',
+        sub-weight: lighter,
+        sub-size: 3vw,
+        menu-sub-size:1.5vw,
+        1:$chic-color1,
+        2:$chic-color2,
+        3:$chic-color3,
     ),
     chic: (
         font: 'Noto Serif',
         back: #fff5fe,
         txt: $chic-txt,
+        title: linear-gradient(140deg, $chic-color1, $chic-color2, $chic-color3),
+        title-font: 'Croissant one',
+        title-weight: lighter,
+        title-size: 2.5vw,
+        sub-font: 'Noto Serif',
+        sub-weight: bold,
+        sub-color-1: $chic-color1,
+        sub-size: 3vw,
+        menu-sub-size:1.5vw,
+        1:$chic-color1,
+        2:$chic-color2,
+        3:$chic-color3,
     ),
     papille: (
         font: 'Bad Script',
         back: #edefef,
         txt: $papille-txt,
+        title: linear-gradient(25deg, #0431df, #0887fb 60%),
+        title-font: 'Dancing Script',
+        title-weight: normal,
+        title-size: 3vw,
+        sub-font: 'Bad Script',
+        sub-weight: bold,
+        sub-size: 3vw,
+        menu-sub-size:1.5vw,
+        1:$chic-color1,
+        2:$chic-color2,
+        3:$chic-color3,
     ),
     palette: (
         font: 'Bad Script',
         back: #fdfffd,
         txt: $palette-txt,
+        title: linear-gradient(25deg, #3d9339, #bfff7e 60%),
+        title-font: 'Kaushan Script',
+        title-weight: normal,
+        title-size: 3vw,
+        sub-font: 'Bad Script',
+        sub-weight: bold,
+        sub-size: 3vw,
+        menu-sub-size:1.5vw,
+        1:$chic-color1,
+        2:$chic-color2,
+        3:$chic-color3,
     )
 );
 
 /* Mixins*/
+
 @mixin mobile-only {
     @media screen and (max-width: $mobile){
       @content;
     }
   }
 
-@mixin restotest($state) {
+@mixin resto($state) {
     $plt: map-get($resto, $state);
     background-color: map-get($plt, back);
     color: map-get($plt, txt);
     font-family: map-get($plt,font);
 }
 
+@mixin underline($state) {
+        $plt: map-get($resto, $state);
+        background-color: map-get($plt, back);
+    }
+
 @mixin title($state) {
-    $plt:map-get($title, $state);
-    background: map-get($plt,title);
+    $plt: map-get($resto, $state);
+    background: map-get($plt, title);
     -webkit-background-clip: $title-prm2;
     -webkit-text-fill-color: $title-prm3;
-    font-family: map-get($plt,font);
-    font-weight: map-get($plt,weight);
-    font-size: map-get($plt,size);
+    font-family: map-get($plt,title-font);
+    font-weight: map-get($plt,title-weight);
+    font-size: map-get($plt,title-size);
 }
 
 @mixin subtitle($state) {
-    $plt:map-get($subtitle, $state);
-    font-family: map-get($plt,font-sub);
-    font-weight: map-get($plt,weight-sub);
-    font-size: map-get($plt,size-sub);   
+    $plt:map-get($resto, $state);
+    font-family: map-get($plt,sub-font);
+    font-weight: map-get($plt,sub-weight);
+    font-size: map-get($plt,sub-size);   
 }
 
 @mixin sub_menu($state) {
-    $plt:map-get($sub_menu, $state);
-    font-family: map-get($plt,font-sub);
-    font-weight: map-get($plt,weight-sub);
-    font-size: map-get($plt,size-sub);   
+    $plt:map-get($resto, $state);
+    font-family: map-get($plt,sub-font);
+    font-weight: map-get($plt,sub-weight);
+    font-size: map-get($plt,menu-sub-size);   
 }
 
 @mixin heading-style {
@@ -270,7 +255,7 @@ footer {
                 .sub_home {
                     @include subtitle($type);
                 }
-                @include restotest($type);
+                @include resto($type);
             }
         }
         &:hover {
@@ -348,7 +333,7 @@ footer {
                     @include sub_menu($type);
                 }
             }
-                @include restotest($type);
+                @include resto($type);
             }
         }
         &__part {
@@ -387,13 +372,22 @@ footer {
 .underline {
     position: relative;
   }
+
+  @each $type in $types {
+      @for $i from 1 through 3 {
+  .underline__#{$type}__#{$i}:before {
+    background-color: map-get($chic-color, $i);
+}
+}
+  }
+
+
   .underline:before {
     content: "";
     position: absolute;
     width: 100%;
     height: 3px;
     bottom: 0;
-    background-color: $papille-txt;
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.5s ease-in-out;
