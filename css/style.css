@@ -1,5 +1,8 @@
 @charset "UTF-8";
 /* Variables */
+/* $breakpoints: (
+  mobile: 599px,
+); */
 /* Mixins*/
 /* Général */
 body {
@@ -78,8 +81,16 @@ footer {
 }
 /* Home */
 .home {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+@media screen and (max-width: 599px) {
+  .home {
+    flex-direction: column;
+    flex-wrap: unset;
+    align-items: center;
+  }
 }
 .home__menu {
   width: 35vw;
@@ -112,7 +123,7 @@ footer {
 }
 .home__menu__chic {
   background-color: #fff5fe;
-  color: #C77412;
+  color: #c77412;
   font-family: "Noto Serif";
 }
 .home__menu__chic .title {
@@ -254,12 +265,9 @@ footer {
   font-weight: lighter;
   font-size: 1.5vw;
 }
-.page__menu__note .sub__menu:hover {
-  text-decoration: underline;
-}
 .page__menu__chic {
   background-color: #fff5fe;
-  color: #C77412;
+  color: #c77412;
   font-family: "Noto Serif";
 }
 .page__menu__chic .title {
@@ -281,9 +289,6 @@ footer {
   font-family: "Noto Serif";
   font-weight: bold;
   font-size: 1.5vw;
-}
-.page__menu__chic .sub__menu:hover {
-  text-decoration: underline;
 }
 .page__menu__papille {
   background-color: #edefef;
@@ -310,9 +315,6 @@ footer {
   font-weight: bold;
   font-size: 1.5vw;
 }
-.page__menu__papille .sub__menu:hover {
-  text-decoration: underline;
-}
 .page__menu__palette {
   background-color: #fdfffd;
   color: #72bf56;
@@ -337,9 +339,6 @@ footer {
   font-family: "Bad Script";
   font-weight: bold;
   font-size: 1.5vw;
-}
-.page__menu__palette .sub__menu:hover {
-  text-decoration: underline;
 }
 .page__menu__part {
   display: flex;
@@ -396,6 +395,27 @@ footer {
 }
 .sidebar__palette__3 {
   background-image: url("../img/palette_3.png");
+}
+
+/*underline test*/
+.underline {
+  position: relative;
+}
+
+.underline:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  bottom: 0;
+  background-color: #0887fb;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease-in-out;
+}
+
+.underline:hover:before {
+  transform: scaleX(1);
 }
 
 /*# sourceMappingURL=style.css.map */

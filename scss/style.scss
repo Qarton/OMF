@@ -14,9 +14,11 @@ $anim-delay: $anim-dur / $num-dots;
 
 $types: (note, chic, papille, palette);
 
-$breakpoints: (
-  mobile: 599px
-);
+/* $breakpoints: (
+  mobile: 599px,
+); */
+
+$mobile:599px;
 
 $title: (
     note: (
@@ -90,33 +92,43 @@ $sub_menu: (
         size-sub: 1.5vw,
     )
 );
+$note-txt:#3c1218;
+$chic-txt:#c77412;
+$papille-txt:#0887fb;
+$palette-txt:#72bf56;
+
 
 $resto: (
     note: (
         font: 'Sriracha',
         back: #fcdfdb,
-        txt: #3c1218,
+        txt: $note-txt,
     ),
     chic: (
         font: 'Noto Serif',
         back: #fff5fe,
-        txt: #C77412,
+        txt: $chic-txt,
     ),
     papille: (
         font: 'Bad Script',
         back: #edefef,
-        txt: #0887fb,
+        txt: $papille-txt,
     ),
     palette: (
         font: 'Bad Script',
         back: #fdfffd,
-        txt: #72bf56,
+        txt: $palette-txt,
     )
 );
 
 /* Mixins*/
+@mixin mobile-only {
+    @media screen and (max-width: $mobile){
+      @content;
+    }
+  }
 
-@mixin resto($state) {
+@mixin restotest($state) {
     $plt: map-get($resto, $state);
     background-color: map-get($plt, back);
     color: map-get($plt, txt);
@@ -232,8 +244,14 @@ footer {
 
 /* Home */
 .home {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    @include mobile-only{
+        flex-direction: column;
+        flex-wrap: unset;
+        align-items: center;
+        }
     &__menu {
         width: 35vw;
         height: 45vw;
@@ -252,7 +270,7 @@ footer {
                 .sub_home {
                     @include subtitle($type);
                 }
-                @include resto($type);
+                @include restotest($type);
             }
         }
         &:hover {
@@ -328,12 +346,9 @@ footer {
                     width: 100%;
                 &__menu {
                     @include sub_menu($type);
-                    &:hover {
-                        text-decoration: underline;
-                    }
                 }
             }
-                @include resto($type);
+                @include restotest($type);
             }
         }
         &__part {
@@ -365,3 +380,25 @@ footer {
         }
     }
 }
+
+/*underline test*/
+
+
+.underline {
+    position: relative;
+  }
+  .underline:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: 0;
+    background-color: $papille-txt;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .underline:hover:before {
+    transform: scaleX(1);
+  }
