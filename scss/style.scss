@@ -3,14 +3,21 @@ $logo-font: 'Roboto';
 $green: #579c87;
 $yellow: #FDCB46;
 $white: #FFF;
-$chic-color:#fff;
+
+$note-txt:#3c1218;
+
+$chic-txt:#c77412;
 $chic-color1:#C67412;
 $chic-color2:#A56799;
 $chic-color3:#6E4CCC;
-$note-txt:#3c1218;
-$chic-txt:#c77412;
+
 $papille-txt:#0887fb;
+$papille-color1:#0228dd;
+$papille-color2:#0670f3;
+$papille-color3:#229df9;
+
 $palette-txt:#72bf56;
+
 $title-prm2: text;
 $title-prm3: transparent;
 $num-dots: 3;
@@ -19,18 +26,14 @@ $anim-delay: $anim-dur / $num-dots;
 
 $types: (note, chic, papille, palette);
 
-/* $breakpoints: (
-  mobile: 599px,
-); */
+/*$breakpoints: (
+    mobile: 599px,
+    small-screen: 1024px,
+);*/
 
 $mobile:599px;
-
-$chic-color: (
-        1:$chic-color1,
-        2:$chic-color2,
-        3:$chic-color3,
-    );
-
+$tablet:767px;
+$small-screen: 1024px;
 
 $resto: (
     note: (
@@ -40,14 +43,12 @@ $resto: (
         title: $note-txt,
         title-font: 'Devonshire',
         title-weight: lighter,
-        title-size: 3vw,
+        title-size: 2vw,
         sub-font: 'Sriracha',
         sub-weight: lighter,
-        sub-size: 3vw,
+        sub-size: 2vw,
         menu-sub-size:1.5vw,
-        1:$chic-color1,
-        2:$chic-color2,
-        3:$chic-color3,
+        1:$note-txt,
     ),
     chic: (
         font: 'Noto Serif',
@@ -56,11 +57,11 @@ $resto: (
         title: linear-gradient(140deg, $chic-color1, $chic-color2, $chic-color3),
         title-font: 'Croissant one',
         title-weight: lighter,
-        title-size: 2.5vw,
+        title-size: 1.5vw,
         sub-font: 'Noto Serif',
         sub-weight: bold,
         sub-color-1: $chic-color1,
-        sub-size: 3vw,
+        sub-size: 2vw,
         menu-sub-size:1.5vw,
         1:$chic-color1,
         2:$chic-color2,
@@ -70,17 +71,17 @@ $resto: (
         font: 'Bad Script',
         back: #edefef,
         txt: $papille-txt,
-        title: linear-gradient(25deg, #0431df, #0887fb 60%),
+        title: linear-gradient(25deg, $papille-color1, $papille-color2, $papille-color3 60%),
         title-font: 'Dancing Script',
         title-weight: normal,
-        title-size: 3vw,
+        title-size: 2vw,
         sub-font: 'Bad Script',
         sub-weight: bold,
-        sub-size: 3vw,
+        sub-size: 2vw,
         menu-sub-size:1.5vw,
-        1:$chic-color1,
-        2:$chic-color2,
-        3:$chic-color3,
+        1:$papille-color1,
+        2:$papille-color2,
+        3:$papille-color3,
     ),
     palette: (
         font: 'Bad Script',
@@ -89,24 +90,41 @@ $resto: (
         title: linear-gradient(25deg, #3d9339, #bfff7e 60%),
         title-font: 'Kaushan Script',
         title-weight: normal,
-        title-size: 3vw,
+        title-size: 2vw,
         sub-font: 'Bad Script',
         sub-weight: bold,
-        sub-size: 3vw,
+        sub-size: 2vw,
         menu-sub-size:1.5vw,
-        1:$chic-color1,
-        2:$chic-color2,
-        3:$chic-color3,
+        1:$palette-txt,
     )
 );
 
+
 /* Mixins*/
+
+/*@mixin breakpoint($value) {
+    @media screen and (max-width:map-get($breakpoints,$value)){
+      @content;
+    }
+  }*/
 
 @mixin mobile-only {
     @media screen and (max-width: $mobile){
       @content;
     }
   }
+
+@mixin tablet {
+    @media screen and (max-width: $tablet){
+        @content;
+    }
+}
+
+@mixin small-screen {
+    @media screen and (max-width: $small-screen){
+        @content;
+    }
+}
 
 @mixin resto($state) {
     $plt: map-get($resto, $state);
@@ -115,10 +133,13 @@ $resto: (
     font-family: map-get($plt,font);
 }
 
-@mixin underline($state) {
-        $plt: map-get($resto, $state);
-        background-color: map-get($plt, back);
-    }
+@mixin item ($color) {
+    background-color: $color;
+}
+
+@mixin font-sub ($color) {
+    color: $color;
+}
 
 @mixin title($state) {
     $plt: map-get($resto, $state);
@@ -128,6 +149,7 @@ $resto: (
     font-family: map-get($plt,title-font);
     font-weight: map-get($plt,title-weight);
     font-size: map-get($plt,title-size);
+    margin-bottom: 20px;
 }
 
 @mixin subtitle($state) {
@@ -164,6 +186,7 @@ h2 {
 
 a {
     text-decoration: none;
+
 }
 
 ul {
@@ -220,7 +243,7 @@ footer {
 
 @keyframes dots {
     0% {
-        transform: translateY(200%);
+        transform: translateY(100%);
     };
     100% {
         transform: translateY(0%);
@@ -232,15 +255,21 @@ footer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    @include mobile-only{
+    margin:1vw;
+    @include mobile-only {
+        display: flex;
         flex-direction: column;
         flex-wrap: unset;
         align-items: center;
         }
+    &__link{
+        width:45%;
+        height: 25vw;
+    }
     &__menu {
-        width: 35vw;
-        height: 45vw;
-        margin: 5vw;
+        width: 20vw;
+        height: 22.5vw;
+        margin: auto;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -262,7 +291,7 @@ footer {
             transform: scale(1.1);
         }
         i {
-            font-size: 8vw;
+            font-size: 1.5vw;
         }
     }
     &__next {
@@ -284,15 +313,14 @@ footer {
             transform: scale(1.1);
         }
         .load {
-            width: 40px;
-            height: 25px;
+            width: 3vw;
             display: flex;
             justify-content: space-evenly;
             align-items: center;
             &_dot {
                 background-color: $yellow;
-                height: 5px;
-                width: 5px;
+                height: 0.5vw;
+                width: 0.5vw;
                 animation: dots $anim-dur backwards infinite ease-in-out alternate;
                 @for $i from 1 through $num-dots {
                     &--#{$i} {
@@ -331,7 +359,18 @@ footer {
                     width: 100%;
                 &__menu {
                     @include sub_menu($type);
+                    @for $i from 1 through 3 {
+                        @each $name, $value in $resto {
+                            
+                            &__#{$name}__#{$i} {
+                                @include font-sub(
+                                    map-get($value, $i),
+                                );
+                                }
+                            }
+                        }
                 }
+                
             }
                 @include resto($type);
             }
@@ -347,6 +386,7 @@ footer {
         }
     }
 }
+
 
 .sidebar {
     background-repeat: no-repeat;
@@ -373,15 +413,6 @@ footer {
     position: relative;
   }
 
-  @each $type in $types {
-      @for $i from 1 through 3 {
-  .underline__#{$type}__#{$i}:before {
-    background-color: map-get($chic-color, $i);
-}
-}
-  }
-
-
   .underline:before {
     content: "";
     position: absolute;
@@ -392,6 +423,17 @@ footer {
     transform-origin: left;
     transition: transform 0.5s ease-in-out;
   }
+
+  @for $i from 1 through 3 {
+    @each $name, $value in $resto {
+        
+        .underline__#{$name}__#{$i}:before {
+            @include item(
+                map-get($value, $i),
+            );
+            }
+        }
+    }
 
   .underline:hover:before {
     transform: scaleX(1);

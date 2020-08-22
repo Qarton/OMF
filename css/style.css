@@ -1,9 +1,15 @@
 @charset "UTF-8";
 /* Variables */
-/* $breakpoints: (
-  mobile: 599px,
-); */
+/*$breakpoints: (
+    mobile: 599px,
+    small-screen: 1024px,
+);*/
 /* Mixins*/
+/*@mixin breakpoint($value) {
+    @media screen and (max-width:map-get($breakpoints,$value)){
+      @content;
+    }
+  }*/
 /* Général */
 body {
   font-family: "Roboto", sans-serif;
@@ -73,7 +79,7 @@ footer {
 }
 @keyframes dots {
   0% {
-    transform: translateY(200%);
+    transform: translateY(100%);
   }
   100% {
     transform: translateY(0%);
@@ -84,18 +90,24 @@ footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  margin: 1vw;
 }
 @media screen and (max-width: 599px) {
   .home {
+    display: flex;
     flex-direction: column;
     flex-wrap: unset;
     align-items: center;
   }
 }
+.home__link {
+  width: 45%;
+  height: 25vw;
+}
 .home__menu {
-  width: 35vw;
-  height: 45vw;
-  margin: 5vw;
+  width: 20vw;
+  height: 22.5vw;
+  margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -114,12 +126,13 @@ footer {
   -webkit-text-fill-color: transparent;
   font-family: "Devonshire";
   font-weight: lighter;
-  font-size: 3vw;
+  font-size: 2vw;
+  margin-bottom: 20px;
 }
 .home__menu__note .sub_home {
   font-family: "Sriracha";
   font-weight: lighter;
-  font-size: 3vw;
+  font-size: 2vw;
 }
 .home__menu__chic {
   background-color: #fff5fe;
@@ -132,12 +145,13 @@ footer {
   -webkit-text-fill-color: transparent;
   font-family: "Croissant one";
   font-weight: lighter;
-  font-size: 2.5vw;
+  font-size: 1.5vw;
+  margin-bottom: 20px;
 }
 .home__menu__chic .sub_home {
   font-family: "Noto Serif";
   font-weight: bold;
-  font-size: 3vw;
+  font-size: 2vw;
 }
 .home__menu__papille {
   background-color: #edefef;
@@ -145,17 +159,18 @@ footer {
   font-family: "Bad Script";
 }
 .home__menu__papille .title {
-  background: linear-gradient(25deg, #0431df, #0887fb 60%);
+  background: linear-gradient(25deg, #0228dd, #0670f3, #229df9 60%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: "Dancing Script";
   font-weight: normal;
-  font-size: 3vw;
+  font-size: 2vw;
+  margin-bottom: 20px;
 }
 .home__menu__papille .sub_home {
   font-family: "Bad Script";
   font-weight: bold;
-  font-size: 3vw;
+  font-size: 2vw;
 }
 .home__menu__palette {
   background-color: #fdfffd;
@@ -168,18 +183,19 @@ footer {
   -webkit-text-fill-color: transparent;
   font-family: "Kaushan Script";
   font-weight: normal;
-  font-size: 3vw;
+  font-size: 2vw;
+  margin-bottom: 20px;
 }
 .home__menu__palette .sub_home {
   font-family: "Bad Script";
   font-weight: bold;
-  font-size: 3vw;
+  font-size: 2vw;
 }
 .home__menu:hover {
   transform: scale(1.1);
 }
 .home__menu i {
-  font-size: 8vw;
+  font-size: 1.5vw;
 }
 .home__next {
   margin-bottom: 10vw;
@@ -203,16 +219,15 @@ footer {
   transform: scale(1.1);
 }
 .home__btn_next .load {
-  width: 40px;
-  height: 25px;
+  width: 3vw;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
 .home__btn_next .load_dot {
   background-color: #FDCB46;
-  height: 5px;
-  width: 5px;
+  height: 0.5vw;
+  width: 0.5vw;
   animation: dots 1s backwards infinite ease-in-out alternate;
 }
 .home__btn_next .load_dot--1 {
@@ -251,7 +266,8 @@ footer {
   -webkit-text-fill-color: transparent;
   font-family: "Devonshire";
   font-weight: lighter;
-  font-size: 3vw;
+  font-size: 2vw;
+  margin-bottom: 20px;
 }
 .page__menu__note .sub {
   display: flex;
@@ -265,6 +281,30 @@ footer {
   font-weight: lighter;
   font-size: 1.5vw;
 }
+.page__menu__note .sub__menu__note__1 {
+  color: #3c1218;
+}
+.page__menu__note .sub__menu__chic__1 {
+  color: #C67412;
+}
+.page__menu__note .sub__menu__papille__1 {
+  color: #0228dd;
+}
+.page__menu__note .sub__menu__palette__1 {
+  color: #72bf56;
+}
+.page__menu__note .sub__menu__chic__2 {
+  color: #A56799;
+}
+.page__menu__note .sub__menu__papille__2 {
+  color: #0670f3;
+}
+.page__menu__note .sub__menu__chic__3 {
+  color: #6E4CCC;
+}
+.page__menu__note .sub__menu__papille__3 {
+  color: #229df9;
+}
 .page__menu__chic {
   background-color: #fff5fe;
   color: #c77412;
@@ -276,7 +316,8 @@ footer {
   -webkit-text-fill-color: transparent;
   font-family: "Croissant one";
   font-weight: lighter;
-  font-size: 2.5vw;
+  font-size: 1.5vw;
+  margin-bottom: 20px;
 }
 .page__menu__chic .sub {
   display: flex;
@@ -290,18 +331,43 @@ footer {
   font-weight: bold;
   font-size: 1.5vw;
 }
+.page__menu__chic .sub__menu__note__1 {
+  color: #3c1218;
+}
+.page__menu__chic .sub__menu__chic__1 {
+  color: #C67412;
+}
+.page__menu__chic .sub__menu__papille__1 {
+  color: #0228dd;
+}
+.page__menu__chic .sub__menu__palette__1 {
+  color: #72bf56;
+}
+.page__menu__chic .sub__menu__chic__2 {
+  color: #A56799;
+}
+.page__menu__chic .sub__menu__papille__2 {
+  color: #0670f3;
+}
+.page__menu__chic .sub__menu__chic__3 {
+  color: #6E4CCC;
+}
+.page__menu__chic .sub__menu__papille__3 {
+  color: #229df9;
+}
 .page__menu__papille {
   background-color: #edefef;
   color: #0887fb;
   font-family: "Bad Script";
 }
 .page__menu__papille .title {
-  background: linear-gradient(25deg, #0431df, #0887fb 60%);
+  background: linear-gradient(25deg, #0228dd, #0670f3, #229df9 60%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: "Dancing Script";
   font-weight: normal;
-  font-size: 3vw;
+  font-size: 2vw;
+  margin-bottom: 20px;
 }
 .page__menu__papille .sub {
   display: flex;
@@ -315,6 +381,30 @@ footer {
   font-weight: bold;
   font-size: 1.5vw;
 }
+.page__menu__papille .sub__menu__note__1 {
+  color: #3c1218;
+}
+.page__menu__papille .sub__menu__chic__1 {
+  color: #C67412;
+}
+.page__menu__papille .sub__menu__papille__1 {
+  color: #0228dd;
+}
+.page__menu__papille .sub__menu__palette__1 {
+  color: #72bf56;
+}
+.page__menu__papille .sub__menu__chic__2 {
+  color: #A56799;
+}
+.page__menu__papille .sub__menu__papille__2 {
+  color: #0670f3;
+}
+.page__menu__papille .sub__menu__chic__3 {
+  color: #6E4CCC;
+}
+.page__menu__papille .sub__menu__papille__3 {
+  color: #229df9;
+}
 .page__menu__palette {
   background-color: #fdfffd;
   color: #72bf56;
@@ -326,7 +416,8 @@ footer {
   -webkit-text-fill-color: transparent;
   font-family: "Kaushan Script";
   font-weight: normal;
-  font-size: 3vw;
+  font-size: 2vw;
+  margin-bottom: 20px;
 }
 .page__menu__palette .sub {
   display: flex;
@@ -339,6 +430,30 @@ footer {
   font-family: "Bad Script";
   font-weight: bold;
   font-size: 1.5vw;
+}
+.page__menu__palette .sub__menu__note__1 {
+  color: #3c1218;
+}
+.page__menu__palette .sub__menu__chic__1 {
+  color: #C67412;
+}
+.page__menu__palette .sub__menu__papille__1 {
+  color: #0228dd;
+}
+.page__menu__palette .sub__menu__palette__1 {
+  color: #72bf56;
+}
+.page__menu__palette .sub__menu__chic__2 {
+  color: #A56799;
+}
+.page__menu__palette .sub__menu__papille__2 {
+  color: #0670f3;
+}
+.page__menu__palette .sub__menu__chic__3 {
+  color: #6E4CCC;
+}
+.page__menu__palette .sub__menu__papille__3 {
+  color: #229df9;
 }
 .page__menu__part {
   display: flex;
@@ -402,54 +517,6 @@ footer {
   position: relative;
 }
 
-.underline__note__1:before {
-  background-color: #C67412;
-}
-
-.underline__note__2:before {
-  background-color: #A56799;
-}
-
-.underline__note__3:before {
-  background-color: #6E4CCC;
-}
-
-.underline__chic__1:before {
-  background-color: #C67412;
-}
-
-.underline__chic__2:before {
-  background-color: #A56799;
-}
-
-.underline__chic__3:before {
-  background-color: #6E4CCC;
-}
-
-.underline__papille__1:before {
-  background-color: #C67412;
-}
-
-.underline__papille__2:before {
-  background-color: #A56799;
-}
-
-.underline__papille__3:before {
-  background-color: #6E4CCC;
-}
-
-.underline__palette__1:before {
-  background-color: #C67412;
-}
-
-.underline__palette__2:before {
-  background-color: #A56799;
-}
-
-.underline__palette__3:before {
-  background-color: #6E4CCC;
-}
-
 .underline:before {
   content: "";
   position: absolute;
@@ -459,6 +526,38 @@ footer {
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.5s ease-in-out;
+}
+
+.underline__note__1:before {
+  background-color: #3c1218;
+}
+
+.underline__chic__1:before {
+  background-color: #C67412;
+}
+
+.underline__papille__1:before {
+  background-color: #0228dd;
+}
+
+.underline__palette__1:before {
+  background-color: #72bf56;
+}
+
+.underline__chic__2:before {
+  background-color: #A56799;
+}
+
+.underline__papille__2:before {
+  background-color: #0670f3;
+}
+
+.underline__chic__3:before {
+  background-color: #6E4CCC;
+}
+
+.underline__papille__3:before {
+  background-color: #229df9;
 }
 
 .underline:hover:before {
