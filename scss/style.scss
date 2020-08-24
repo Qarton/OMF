@@ -32,10 +32,10 @@ $types: (note, chic, papille, palette);
 );*/
 
 $mobile:599px;
-$tablet:767px;
+$tablet:850px;
 $small-screen: 1024px;
 
-$resto: (
+$home-page: (
     note: (
         font: 'Sriracha',
         back: #fcdfdb,
@@ -43,11 +43,11 @@ $resto: (
         title: $note-txt,
         title-font: 'Devonshire',
         title-weight: lighter,
-        title-size: 2vw,
+        title-size: 3rem,
         sub-font: 'Sriracha',
         sub-weight: lighter,
-        sub-size: 2vw,
-        menu-sub-size:1.5vw,
+        sub-size: 3rem,
+        menu-sub-size:2rem,
         1:$note-txt,
     ),
     chic: (
@@ -57,12 +57,12 @@ $resto: (
         title: linear-gradient(140deg, $chic-color1, $chic-color2, $chic-color3),
         title-font: 'Croissant one',
         title-weight: lighter,
-        title-size: 1.5vw,
+        title-size: 1.9rem,
         sub-font: 'Noto Serif',
         sub-weight: bold,
         sub-color-1: $chic-color1,
-        sub-size: 2vw,
-        menu-sub-size:1.5vw,
+        sub-size: 3rem,
+        menu-sub-size:2rem,
         1:$chic-color1,
         2:$chic-color2,
         3:$chic-color3,
@@ -74,11 +74,11 @@ $resto: (
         title: linear-gradient(25deg, $papille-color1, $papille-color2, $papille-color3 60%),
         title-font: 'Dancing Script',
         title-weight: normal,
-        title-size: 2vw,
+        title-size: 3rem,
         sub-font: 'Bad Script',
         sub-weight: bold,
-        sub-size: 2vw,
-        menu-sub-size:1.5vw,
+        sub-size: 3rem,
+        menu-sub-size:2rem,
         1:$papille-color1,
         2:$papille-color2,
         3:$papille-color3,
@@ -90,12 +90,52 @@ $resto: (
         title: linear-gradient(25deg, #3d9339, #bfff7e 60%),
         title-font: 'Kaushan Script',
         title-weight: normal,
-        title-size: 2vw,
+        title-size: 3rem,
         sub-font: 'Bad Script',
         sub-weight: bold,
-        sub-size: 2vw,
-        menu-sub-size:1.5vw,
+        sub-size: 3rem,
+        menu-sub-size:2rem,
         1:$palette-txt,
+    )
+);
+
+$menu-page: (
+    note: (
+        title: $note-txt,
+        title-font: 'Devonshire',
+        title-weight: lighter,
+        title-size: 3rem,
+        sub-font: 'Sriracha',
+        sub-weight: lighter,
+        sub-size: 1.5rem,
+    ),
+    chic: (
+        title: linear-gradient(140deg, $chic-color1, $chic-color2, $chic-color3),
+        title-font: 'Croissant one',
+        title-weight: lighter,
+        title-size: 2.5rem,
+        sub-font: 'Noto Serif',
+        sub-weight: bold,
+        sub-color-1: $chic-color1,
+        sub-size: 1.5rem,
+    ),
+    papille: (
+        title: linear-gradient(25deg, $papille-color1, $papille-color2, $papille-color3 60%),
+        title-font: 'Dancing Script',
+        title-weight: normal,
+        title-size: 3rem,
+        sub-font: 'Bad Script',
+        sub-weight: bold,
+        sub-size: 1.5rem,
+    ),
+    palette: (
+        title: linear-gradient(25deg, #3d9339, #bfff7e 60%),
+        title-font: 'Kaushan Script',
+        title-weight: normal,
+        title-size: 3rem,
+        sub-font: 'Bad Script',
+        sub-weight: bold,
+        sub-size: 1.5rem,
     )
 );
 
@@ -127,7 +167,7 @@ $resto: (
 }
 
 @mixin resto($state) {
-    $plt: map-get($resto, $state);
+    $plt: map-get($home-page, $state);
     background-color: map-get($plt, back);
     color: map-get($plt, txt);
     font-family: map-get($plt,font);
@@ -142,7 +182,18 @@ $resto: (
 }
 
 @mixin title($state) {
-    $plt: map-get($resto, $state);
+    $plt: map-get($home-page, $state);
+    background: map-get($plt, title);
+    -webkit-background-clip: $title-prm2;
+    -webkit-text-fill-color: $title-prm3;
+    font-family: map-get($plt,title-font);
+    font-weight: map-get($plt,title-weight);
+    font-size: map-get($plt,title-size);
+    margin-bottom: 20px;
+}
+
+@mixin title-menu($state) {
+    $plt: map-get($menu-page, $state);
     background: map-get($plt, title);
     -webkit-background-clip: $title-prm2;
     -webkit-text-fill-color: $title-prm3;
@@ -153,17 +204,17 @@ $resto: (
 }
 
 @mixin subtitle($state) {
-    $plt:map-get($resto, $state);
+    $plt:map-get($home-page, $state);
     font-family: map-get($plt,sub-font);
     font-weight: map-get($plt,sub-weight);
     font-size: map-get($plt,sub-size);   
 }
 
 @mixin sub_menu($state) {
-    $plt:map-get($resto, $state);
+    $plt:map-get($menu-page, $state);
     font-family: map-get($plt,sub-font);
     font-weight: map-get($plt,sub-weight);
-    font-size: map-get($plt,menu-sub-size);   
+    font-size: map-get($plt,sub-size);
 }
 
 @mixin heading-style {
@@ -177,7 +228,7 @@ $resto: (
 body {
     font-family: $logo-font, sans-serif;
     margin: 0px;
-    font-size: 1.2vw;
+    font-size: 1rem;
 }
 
 h2 {
@@ -189,9 +240,14 @@ a {
 
 }
 
-ul {
+table {
+    width: 100%;
+}
+
+
+/*ul {
     list-style-type: none;
-    }
+    }*/
 
 i {
     background: -webkit-linear-gradient(#f04a5e, #f8a183);
@@ -215,7 +271,7 @@ footer {
     justify-content: space-evenly;
     position: fixed;
     bottom: 0;
-    width: 100vw;
+    width: 100%;
 }
 
 /* animations */ 
@@ -252,24 +308,25 @@ footer {
 
 /* Home */
 .home {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    margin:1vw;
-    @include mobile-only {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: unset;
-        align-items: center;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 6rem;
+    margin:2rem;
+    @include tablet {
+        grid-template-columns: 1fr;
+        margin: 5rem;
         }
-    &__link{
-        width:45%;
-        height: 25vw;
+    @include mobile-only {
+        margin: 2rem 0rem;
     }
     &__menu {
-        width: 20vw;
-        height: 22.5vw;
+        height: 600px;
+        width: 70%;
         margin: auto;
+        @include mobile-only {
+            margin: 0;
+            width:100%;
+        }
         display: flex;
         justify-content: center;
         align-items: center;
@@ -291,7 +348,7 @@ footer {
             transform: scale(1.1);
         }
         i {
-            font-size: 1.5vw;
+            font-size: 3rem;
         }
     }
     &__next {
@@ -338,29 +395,32 @@ footer {
     display: flex;
     justify-content: center;
     &__menu {
-        height: 45vw;
-        margin: 2vw 15vw 3vw;
-        padding: 6vw;
+        margin: 2em 15em 6em;
+        padding: 4em 3em;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
         box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+        @include tablet {
+            width: 100%;
+            margin: 0;
+        }
         @each $type in $types {
             &__#{$type} {
                 .title {
-                    @include title($type);
+                    @include title-menu($type);
                 }
                 .sub {
                     display: flex;
-                    flex-wrap: wrap;
                     align-items: center;
                     justify-content: space-between;
                     width: 100%;
+                    margin: 2em 0em;
                 &__menu {
                     @include sub_menu($type);
                     @for $i from 1 through 3 {
-                        @each $name, $value in $resto {
+                        @each $name, $value in $home-page {
                             
                             &__#{$name}__#{$i} {
                                 @include font-sub(
@@ -376,13 +436,22 @@ footer {
             }
         }
         &__part {
-            display: flex;
+                display: grid;
+                grid-template-columns:3fr 1fr;
+                grid-row-gap: 1rem;
+                width: 100%;
+                aside{
+                    text-align: left;
+                }
+                article{
+                    text-align: right;
+                }
         }
         &__link {
             color: $yellow;
         }
         i {
-            font-size: 3vw;
+            font-size: 3rem;
         }
     }
 }
@@ -392,8 +461,16 @@ footer {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    height: 2vw;
-    width: 10vw;
+    height: 10px;
+    width: 150px;
+    @include small-screen{
+        height:5px;
+        width: 100px;
+    }
+    @include mobile-only{
+        height: 0;
+        width: 0;
+    }
     &__right {
         transform: scaleX(-1);
     }
@@ -425,7 +502,7 @@ footer {
   }
 
   @for $i from 1 through 3 {
-    @each $name, $value in $resto {
+    @each $name, $value in $home-page {
         
         .underline__#{$name}__#{$i}:before {
             @include item(
