@@ -1,0 +1,12 @@
+{
+  "name": "omf",
+  "version": "1.0.0",
+  "description": "OhMyFood site",
+  "main": "index.js",
+  "scripts": {
+    "prefix": "postcss ./css/style.css --use autoprefixer -d ./css/prefixed/"
+  },
+  "author": "",
+  "license": "ISC",
+  "browserslist": "last 4 versions"
+}
