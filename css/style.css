@@ -1,11 +1,12 @@
 @charset "UTF-8";
 /* Variables */
-/*$breakpoints: (
-    mobile: 599px,
-    small-screen: 1024px,
-);*/
 /* Mixins*/
-/*@mixin breakpoint($value) {
+/*$breakpoints: (
+    'mobile': 599px,
+    'small-screen': 1024px,
+);
+
+@mixin breakpoint($value) {
     @media screen and (max-width:map-get($breakpoints,$value)){
       @content;
     }
@@ -512,40 +513,40 @@ footer .footer_text {
   transform: scaleX(-1);
 }
 .sidebar__note__1 {
-  background-image: url("../img/note_1.png");
+  background-image: url("../../img/note_1.png");
 }
 .sidebar__chic__1 {
-  background-image: url("../img/chic_1.png");
+  background-image: url("../../img/chic_1.png");
 }
 .sidebar__papille__1 {
-  background-image: url("../img/papille_1.png");
+  background-image: url("../../img/papille_1.png");
 }
 .sidebar__palette__1 {
-  background-image: url("../img/palette_1.png");
+  background-image: url("../../img/palette_1.png");
 }
 .sidebar__note__2 {
-  background-image: url("../img/note_2.png");
+  background-image: url("../../img/note_2.png");
 }
 .sidebar__chic__2 {
-  background-image: url("../img/chic_2.png");
+  background-image: url("../../img/chic_2.png");
 }
 .sidebar__papille__2 {
-  background-image: url("../img/papille_2.png");
+  background-image: url("../../img/papille_2.png");
 }
 .sidebar__palette__2 {
-  background-image: url("../img/palette_2.png");
+  background-image: url("../../img/palette_2.png");
 }
 .sidebar__note__3 {
-  background-image: url("../img/note_3.png");
+  background-image: url("../../img/note_3.png");
 }
 .sidebar__chic__3 {
-  background-image: url("../img/chic_3.png");
+  background-image: url("../../img/chic_3.png");
 }
 .sidebar__papille__3 {
-  background-image: url("../img/papille_3.png");
+  background-image: url("../../img/papille_3.png");
 }
 .sidebar__palette__3 {
-  background-image: url("../img/palette_3.png");
+  background-image: url("../../img/palette_3.png");
 }
 
 .underline {

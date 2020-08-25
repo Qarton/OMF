@@ -23,10 +23,7 @@ $title-prm3: transparent;
 
 $types: (note, chic, papille, palette);
 
-/*$breakpoints: (
-    mobile: 599px,
-    small-screen: 1024px,
-);*/
+
 
 $mobile:599px;
 $tablet:850px;
@@ -142,8 +139,12 @@ $anim-delay: $anim-dur / $num-dots;
 
 
 /* Mixins*/
+/*$breakpoints: (
+    'mobile': 599px,
+    'small-screen': 1024px,
+);
 
-/*@mixin breakpoint($value) {
+@mixin breakpoint($value) {
     @media screen and (max-width:map-get($breakpoints,$value)){
       @content;
     }
@@ -474,7 +475,7 @@ footer {
     @for $i from 1 through 3 {
         @each $type in $types {
             &__#{$type}__#{$i} {
-             background-image: url("../img/#{$type}_#{$i}.png");
+             background-image: url("../../img/#{$type}_#{$i}.png");
             }
         }
     }
