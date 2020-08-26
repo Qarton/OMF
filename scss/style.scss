@@ -5,6 +5,8 @@ $yellow: #FDCB46;
 $white: #FFF;
 
 $note-txt:#3c1218;
+$note-color1:#f04a5e;
+$note-color2:#f8a183;
 
 $chic-txt:#c77412;
 $chic-color1:#C67412;
@@ -139,16 +141,6 @@ $anim-delay: $anim-dur / $num-dots;
 
 
 /* Mixins*/
-/*$breakpoints: (
-    'mobile': 599px,
-    'small-screen': 1024px,
-);
-
-@mixin breakpoint($value) {
-    @media screen and (max-width:map-get($breakpoints,$value)){
-      @content;
-    }
-  }*/
 
 @mixin mobile-only {
     @media screen and (max-width: $mobile){
@@ -168,7 +160,7 @@ $anim-delay: $anim-dur / $num-dots;
     }
 }
 
-@mixin resto($state) {
+@mixin resto-style($state) {
     $plt: map-get($home-page, $state);
     background-color: map-get($plt, back);
     color: map-get($plt, txt);
@@ -179,7 +171,7 @@ $anim-delay: $anim-dur / $num-dots;
     background-color: $color;
 }
 
-@mixin font-sub ($color) {
+@mixin font-sub-color ($color) {
     color: $color;
 }
 
@@ -191,6 +183,8 @@ $anim-delay: $anim-dur / $num-dots;
     font-family: map-get($plt,title-font);
     font-weight: map-get($plt,title-weight);
     font-size: map-get($plt,title-size);
+    text-align: center;
+    padding: 10px;
     margin-bottom: 20px;
 }
 
@@ -202,6 +196,7 @@ $anim-delay: $anim-dur / $num-dots;
     font-family: map-get($plt,title-font);
     font-weight: map-get($plt,title-weight);
     font-size: map-get($plt,title-size);
+    text-align: center;
     margin-bottom: 20px;
 }
 
@@ -212,7 +207,7 @@ $anim-delay: $anim-dur / $num-dots;
     font-size: map-get($plt,sub-size);   
 }
 
-@mixin sub_menu($state) {
+@mixin sub-menu($state) {
     $plt:map-get($menu-page, $state);
     font-family: map-get($plt,sub-font);
     font-weight: map-get($plt,sub-weight);
@@ -246,9 +241,10 @@ table {
 }
 
 i {
-    background: -webkit-linear-gradient(#f04a5e, #f8a183);
+    background: -webkit-linear-gradient(250deg, $note-color1, $note-color2);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-size: 3rem;
 }
 
 header {
@@ -322,16 +318,16 @@ footer {
         height: 600px;
         width: 70%;
         margin: auto;
-        @include mobile-only {
-            margin: 0;
-            width:100%;
-        }
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
         box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
         transition: transform 500ms ease-in-out;
+        @include mobile-only {
+            margin: 0;
+            width:100%;
+        }
         @each $type in $types {
             &__#{$type} {
                 .title {
@@ -340,22 +336,21 @@ footer {
                 .sub_home {
                     @include sub-home($type);
                 }
-                @include resto($type);
+                @include resto-style($type);
             }
         }
         &:hover {
             transform: scale(1.1);
-        }
-        i {
-            font-size: 3rem;
+            opacity: 0.5;
         }
     }
-    &__next {
-        margin-bottom: 10vw;
-        display: flex;
-        justify-content: center;
-    }
-    &__btn_next {
+}
+
+.upcoming {
+    margin-bottom: 10vw;
+    display: flex;
+    justify-content: center;
+    &__btn {
         @include heading-style;
         width: 25vw;
         height: 3vw;
@@ -368,25 +363,26 @@ footer {
         &:hover {
             transform: scale(1.1);
         }
-        .load {
-            width: 3vw;
-            display: flex;
-            justify-content: space-evenly;
-            align-items: center;
-            &_dot {
-                background-color: $yellow;
-                height: 0.5vw;
-                width: 0.5vw;
-                animation: dots $anim-dur backwards infinite ease-in-out alternate;
-                @for $i from 1 through $num-dots {
-                    &--#{$i} {
-                        animation-delay: $anim-delay * $i;
-                    }
-                }
+    }
+}
+.loading {
+    width: 1.8vw;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    &_dot {
+        background-color: $yellow;
+        height: 0.3vw;
+        width: 0.3vw;
+        animation: dots $anim-dur backwards infinite ease-in-out alternate;
+        @for $i from 1 through $num-dots {
+            &--#{$i} {
+                animation-delay: $anim-delay * $i;
             }
         }
     }
 }
+
 
 /* Menu-page */ 
 
@@ -394,46 +390,44 @@ footer {
     display: flex;
     justify-content: center;
     &__menu {
-        margin: 2em 15em 6em;
+        margin: 2em auto 6em;
         padding: 4em 3em;
         display: flex;
-        justify-content: center;
         align-items: center;
         flex-direction: column;
         box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
         @include tablet {
-            width: 100%;
             margin: 0;
+            width: 100%;
         }
         @each $type in $types {
             &__#{$type} {
+                @include resto-style($type);
                 .title {
                     @include title-menu($type);
-                }
-                .sub {
+                    }
+                .subtitle {
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
                     width: 100%;
-                    margin: 2em 0em;
-                &__menu {
-                    @include sub_menu($type);
-                    @for $i from 1 through 3 {
-                        @each $name, $value in $home-page {
-                            
-                            &__#{$name}__#{$i} {
-                                @include font-sub(
-                                    map-get($value, $i),
-                                );
+                    margin: 2em;
+                    &__menu {
+                        @include sub-menu($type);
+                        @for $i from 1 through 3 {
+                            @each $name, $value in $home-page {
+                                
+                                &__#{$name}__#{$i} {
+                                    @include font-sub-color(
+                                        map-get($value, $i),
+                                    );
+                                    }
                                 }
                             }
                         }
+                    }
                 }
-                
             }
-                @include resto($type);
-            }
-        }
         &__part {
                 display: grid;
                 grid-template-columns:3fr 1fr;
@@ -448,9 +442,6 @@ footer {
         }
         &__link {
             color: $yellow;
-        }
-        i {
-            font-size: 3rem;
         }
     }
 }
@@ -505,4 +496,4 @@ footer {
                     }
                 }
             }
-  }
+}
