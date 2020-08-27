@@ -31,6 +31,7 @@ $mobile:599px;
 $tablet:850px;
 $small-screen: 1024px;
 
+/* table de style des menus sur la page d'accueil*/
 $home-page: (
     note: (
         font: 'Sriracha',
@@ -95,6 +96,8 @@ $home-page: (
     )
 );
 
+/* table de style des menus sur la page des menus*/
+
 $menu-page: (
     note: (
         title: $note-txt,
@@ -141,7 +144,7 @@ $anim-delay: $anim-dur / $num-dots;
 
 
 /* Mixins*/
-
+/*Mixins media queries*/
 @mixin mobile-only {
     @media screen and (max-width: $mobile){
       @content;
@@ -160,6 +163,8 @@ $anim-delay: $anim-dur / $num-dots;
     }
 }
 
+/*Mixin générale de style des menus générale*/
+
 @mixin resto-style($state) {
     $plt: map-get($home-page, $state);
     background-color: map-get($plt, back);
@@ -167,13 +172,13 @@ $anim-delay: $anim-dur / $num-dots;
     font-family: map-get($plt,font);
 }
 
-@mixin item ($color) {
-    background-color: $color;
+@mixin heading-style {
+    background-color: $green;
+    color: $yellow;
+    font-family: $logo-font, sans-serif;
 }
 
-@mixin font-sub-color ($color) {
-    color: $color;
-}
+/*Mixin de style des menus unique à la page d'accueil*/
 
 @mixin title-home($state) {
     $plt: map-get($home-page, $state);
@@ -188,6 +193,15 @@ $anim-delay: $anim-dur / $num-dots;
     margin-bottom: 20px;
 }
 
+@mixin sub-home($state) {
+    $plt:map-get($home-page, $state);
+    font-family: map-get($plt,sub-font);
+    font-weight: map-get($plt,sub-weight);
+    font-size: map-get($plt,sub-size);   
+}
+
+/*Mixin de style des menus unique à la page des menus*/
+
 @mixin title-menu($state) {
     $plt: map-get($menu-page, $state);
     background: map-get($plt, title);
@@ -200,13 +214,6 @@ $anim-delay: $anim-dur / $num-dots;
     margin-bottom: 20px;
 }
 
-@mixin sub-home($state) {
-    $plt:map-get($home-page, $state);
-    font-family: map-get($plt,sub-font);
-    font-weight: map-get($plt,sub-weight);
-    font-size: map-get($plt,sub-size);   
-}
-
 @mixin sub-menu($state) {
     $plt:map-get($menu-page, $state);
     font-family: map-get($plt,sub-font);
@@ -214,13 +221,49 @@ $anim-delay: $anim-dur / $num-dots;
     font-size: map-get($plt,sub-size);
 }
 
-@mixin heading-style {
-    background-color: $green;
-    color: $yellow;
-    font-family: $logo-font, sans-serif;
+/*Mixins pour gestions sous titres des pages menu*/
+@mixin item ($color) {
+    background-color: $color;
 }
 
-/* Général */
+@mixin font-sub-color ($color) {
+    color: $color;
+}
+
+/* Keyframes pour les animations */
+
+.shake:hover {
+    animation: shakes 1s ease-in-out;
+}
+
+@keyframes shakes {
+    10%, 90% {
+        transform: translateX(-1px);
+      }
+      
+      20%, 80% {
+        transform: translateX(2px);
+      }
+    
+      30%, 50%, 70% {
+        transform: translateX(-4px);
+      }
+    
+      40%, 60% {
+        transform: translateX(4px);
+      }
+}
+
+@keyframes dots {
+    0% {
+        transform: translateY(100%);
+    };
+    100% {
+        transform: translateY(0%);
+    };
+}
+
+/* Propriétés générale à l'ensemble des pages*/
 
 body {
     font-family: $logo-font, sans-serif;
@@ -269,39 +312,7 @@ footer {
     width: 100%;
 }
 
-/* animations */ 
-.shake:hover {
-    animation: shakes 1s ease-in-out;
-}
-
-@keyframes shakes {
-    10%, 90% {
-        transform: translateX(-1px);
-      }
-      
-      20%, 80% {
-        transform: translateX(2px);
-      }
-    
-      30%, 50%, 70% {
-        transform: translateX(-4px);
-      }
-    
-      40%, 60% {
-        transform: translateX(4px);
-      }
-}
-
-@keyframes dots {
-    0% {
-        transform: translateY(100%);
-    };
-    100% {
-        transform: translateY(0%);
-    };
-}
-
-/* Home-page */
+/* Propriétés de la page d'accueil */
 .home {
     display: grid;
     grid-template-columns: repeat(2,1fr);
@@ -365,6 +376,9 @@ footer {
         }
     }
 }
+
+/*Bouton prochainement*/
+
 .loading {
     width: 1.8vw;
     display: flex;
@@ -383,8 +397,7 @@ footer {
     }
 }
 
-
-/* Menu-page */ 
+/* Propriétés des pages des menus*/ 
 
 .page {
     display: flex;

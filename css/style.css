@@ -1,7 +1,41 @@
 @charset "UTF-8";
 /* Variables */
+/* table de style des menus sur la page d'accueil*/
+/* table de style des menus sur la page des menus*/
 /* Mixins*/
-/* Général */
+/*Mixins media queries*/
+/*Mixin générale de style des menus générale*/
+/*Mixin de style des menus unique à la page d'accueil*/
+/*Mixin de style des menus unique à la page des menus*/
+/*Mixins pour gestions sous titres des pages menu*/
+/* Keyframes pour les animations */
+.shake:hover {
+  animation: shakes 1s ease-in-out;
+}
+
+@keyframes shakes {
+  10%, 90% {
+    transform: translateX(-1px);
+  }
+  20%, 80% {
+    transform: translateX(2px);
+  }
+  30%, 50%, 70% {
+    transform: translateX(-4px);
+  }
+  40%, 60% {
+    transform: translateX(4px);
+  }
+}
+@keyframes dots {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+/* Propriétés générale à l'ensemble des pages*/
 body {
   font-family: "Roboto", sans-serif;
   margin: 0px;
@@ -55,34 +89,7 @@ footer .footer_text {
   padding: 1vw;
 }
 
-/* animations */
-.shake:hover {
-  animation: shakes 1s ease-in-out;
-}
-
-@keyframes shakes {
-  10%, 90% {
-    transform: translateX(-1px);
-  }
-  20%, 80% {
-    transform: translateX(2px);
-  }
-  30%, 50%, 70% {
-    transform: translateX(-4px);
-  }
-  40%, 60% {
-    transform: translateX(4px);
-  }
-}
-@keyframes dots {
-  0% {
-    transform: translateY(100%);
-  }
-  100% {
-    transform: translateY(0%);
-  }
-}
-/* Home-page */
+/* Propriétés de la page d'accueil */
 .home {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -228,6 +235,7 @@ footer .footer_text {
   transform: scale(1.1);
 }
 
+/*Bouton prochainement*/
 .loading {
   width: 1.8vw;
   display: flex;
@@ -250,7 +258,7 @@ footer .footer_text {
   animation-delay: 1s;
 }
 
-/* Menu-page */
+/* Propriétés des pages des menus*/
 .page {
   display: flex;
   justify-content: center;
